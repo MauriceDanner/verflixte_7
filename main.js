@@ -1,5 +1,4 @@
-let wuerfel_1 = 0
-let wuerfel_2 = 0
+
 let ergebnis_wuerfel = 0
 let anzahl_wuerfe = 0
 let anzahl_wuerfe_2 = 0
@@ -61,3 +60,5 @@ function punkte_vergleichen() {
     }
 
 }
+
+
