@@ -21,7 +21,7 @@ function wuerfeln() {
         punkte = punkte - ergebnis_wuerfel
         document.getElementById("punkte_1").innerHTML= "Punkte Spieler 1: "+ punkte
         spieler_an_der_reihe = 2
-        alert("S2 ist an der Reihe!")
+        alert("Spieler 2 ist an der Reihe!")
     } else {
         punkte = punkte + ergebnis_wuerfel
         document.getElementById("punkte_1").innerHTML= "Punkte Spieler 1: "+ punkte
@@ -37,17 +37,27 @@ function wuerfeln() {
         } else {
             punkte_2 = punkte_2 + ergebnis_wuerfel
             document.getElementById("punkte_2").innerHTML= "Punkte Spieler 2: "+ punkte_2
+            if (anzahl_wuerfe===anzahl_wuerfe_2){
+            punkte_vergleichen()
+            }
         }
+    }
+}
+
+function runde_beenden() {
+    if(spieler_an_der_reihe ===1){
+        spieler_an_der_reihe = 2
+        alert("Spieler 2 ist an der Reihe!")
+    }else if(spieler_an_der_reihe===2){
+        punkte_vergleichen()
     }
 }
 
 function punkte_vergleichen() {
     if (punkte < punkte_2)
-    {document.getElementById("auswertung_winner").innerHTML= "Spieler 2 hat mit"+ punkte_2 + "zu" +punkte + "gewonnen!"
+    {document.getElementById("auswertung_winner").innerHTML= "Spieler 2 hat mit "+ punkte_2 + " zu " +punkte + " gewonnen!"
     }else if(punkte > punkte_2)
-    {document.getElementById("auswertung_winner").innerHTML= "Spieler 1 hat mit"+ punkte + "zu" +punkte_2 + "gewonnen!"
-    }else (punkte === punkte_2)
-    {document.getElementById("auswertung_winner").innerHTML= "Das Spiel endet im Unentschieden mit"+ punkte + "zu" +punkte_2 + "!"
+    {document.getElementById("auswertung_winner").innerHTML= "Spieler 1 hat mit "+ punkte + " zu " +punkte_2 + " gewonnen!"
     }
-}
 
+}
