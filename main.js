@@ -42,6 +42,8 @@ function wuerfeln() {                                                           
             document.getElementById("punkte_2").innerHTML= "Punkte Spieler 2: "+ punkte_2
             if (anzahl_wuerfe===anzahl_wuerfe_2){
             punkte_vergleichen()                                                                                        //Beenden des Spiels, Weiterführung in der Funktion punkte_vergleichen
+                document.getElementById("wuerfeln").disabled=true
+                document.getElementById("runde_beenden").disabled=true
             }
         }
     }
@@ -53,6 +55,8 @@ function runde_beenden() {                                                      
         alert("Spieler 2 ist an der Reihe!")
     }else if(spieler_an_der_reihe===2){                                                                                 //Fallunterscheidung Spieler 2
         punkte_vergleichen()
+        document.getElementById("wuerfeln").disabled=true
+        document.getElementById("runde_beenden").disabled=true
     }
 }
 
