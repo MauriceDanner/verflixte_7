@@ -6,15 +6,16 @@ let spieler_an_der_reihe = 1
 let punkte = 0
 let punkte_2 = 0
 
+
 function wuerfeln() {                                                                                                   //Eröffnung Funktion würfeln
     let wuerfel_1 = Math.round(Math.random() * 5 + 1)                                                                //Erstellung Zufallszahl zwischen 1 und 6
     let wuerfel_2 = Math.round(Math.random() * 5 + 1)
     document.getElementById("wuerfel_1").innerHTML="Würfel 1: "+ wuerfel_1                                     //Ausgabe der gewürfelten Augenzahl
     document.getElementById("wuerfel_2").innerHTML="Würfel 2: "+ wuerfel_2
 
-    if(wuerfel_1|| wuerfel_2===1) {
-        document.getElementById("1").innerHTML.src="Bilder Visualisierung/wuerfelaugen-1.png"
-    }
+    //if(wuerfel_1|| wuerfel_2===1) {
+        //document.getElementById("1").innerHTML.src="Bilder Visualisierung/wuerfelaugen-1.png"
+    //}
     ergebnis_wuerfel = wuerfel_1 + wuerfel_2                                                                            //Addition der Augenzahlen
     if (spieler_an_der_reihe === 1)                                                                                     //Fallunterscheidung Spieler 1
     {
@@ -37,34 +38,38 @@ function wuerfeln() {                                                           
             punkte_2 = punkte_2 - ergebnis_wuerfel
             document.getElementById("punkte_2").innerHTML= "Punkte Spieler 2: "+ punkte_2
             punkte_vergleichen()
+            document.getElementById("runde_beenden").disabled=true
         } else {
             punkte_2 = punkte_2 + ergebnis_wuerfel
             document.getElementById("punkte_2").innerHTML= "Punkte Spieler 2: "+ punkte_2
             if (anzahl_wuerfe===anzahl_wuerfe_2){
             punkte_vergleichen()                                                                                        //Beenden des Spiels, Weiterführung in der Funktion punkte_vergleichen
-                document.getElementById("wuerfeln").disabled=true
-                document.getElementById("runde_beenden").disabled=true
             }
         }
     }
 }
 
 function runde_beenden() {                                                                                              //Eröffnung Funktion, die Runde beendet
+
     if(spieler_an_der_reihe ===1){                                                                                      //Fallunterscheidung Spieler 1
         spieler_an_der_reihe = 2
         alert("Spieler 2 ist an der Reihe!")
     }else if(spieler_an_der_reihe===2){                                                                                 //Fallunterscheidung Spieler 2
         punkte_vergleichen()
-        document.getElementById("wuerfeln").disabled=true
         document.getElementById("runde_beenden").disabled=true
     }
 }
 
 function punkte_vergleichen() {                                                                                         //Eröffnung Funktion der Auswertung
+    document.getElementById("neuesspiel").disabled=false
     if (punkte < punkte_2)                                                                                              //Fallunterscheidung nach Punkten
     {document.getElementById("auswertung_winner").innerHTML= "Spieler 2 hat mit "+ punkte_2 + " zu " +punkte + " gewonnen!"
+        document.getElementById("wuerfeln").disabled=true
+        document.getElementById("runde_beenden").disabled=true
     }else if(punkte > punkte_2)
     {document.getElementById("auswertung_winner").innerHTML= "Spieler 1 hat mit "+ punkte + " zu " +punkte_2 + " gewonnen!"
+        document.getElementById("wuerfeln").disabled=true
+        document.getElementById("runde_beenden").disabled=true
     }
 
 }
